@@ -7,6 +7,7 @@ class Text:
     sentiments = []
     blob = TextBlob
     colours = []
+    # scaled_colours = None
 
     def __init__(self, text_string):
         self.content = text_string
