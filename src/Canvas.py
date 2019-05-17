@@ -45,10 +45,7 @@ class Canvas:
 
     def save(self, name, to_scale=(200, 200)):
         bbox = self.image.getbbox()
-        print(bbox)
-        print(self.image.size)
         self.image = self.image.crop(bbox)
-        print(self.image.size)
         self.image = self.image.resize(to_scale)
         self.image.save(os.path.join(self.repository, name))
 
@@ -57,7 +54,10 @@ class Canvas:
     #     return scaled_colours
 
 
-frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
+with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
+    plaintext = f.read()
+# frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
+frame = Canvas(plaintext)
 frame.draw()
 
 frame.save("example.png", (300, 300))
