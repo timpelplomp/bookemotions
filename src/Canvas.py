@@ -43,13 +43,13 @@ class Canvas:
                                   fill=colour)
             y_pos += self.rec_height + 1
 
-    def save(self, name, dimension=(200, 200)):
+    def save(self, name, to_scale=(200, 200)):
         bbox = self.image.getbbox()
         print(bbox)
         print(self.image.size)
         self.image = self.image.crop(bbox)
         print(self.image.size)
-        self.image = self.image.resize(dimension)
+        self.image = self.image.resize(to_scale)
         self.image.save(os.path.join(self.repository, name))
 
     # def __scale_colours(self):
@@ -60,4 +60,4 @@ class Canvas:
 frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
 frame.draw()
 
-frame.save("example.png")
+frame.save("example.png", (300, 300))
