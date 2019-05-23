@@ -17,6 +17,7 @@ class Text:
         self.fill_colours()
 
     def fill_sentiments(self):
+        self.sentiments = []
         if not self.sentiments:
             for sentence in self.sentences:
                 self.sentiments.append(sentence.sentiment)
@@ -27,8 +28,9 @@ class Text:
     def fill_colours(self):
         rgb_middle = 255/2
         for sentiment in self.sentiments:
-            red = round(rgb_middle - sentiment.polarity * rgb_middle)
-            green = round(rgb_middle - sentiment.subjectivity * rgb_middle)
+            emotion = round(rgb_middle + sentiment.polarity * rgb_middle)
+            red = 0
+            green = emotion
             blue = 0
 
             self.colours.append((red, green, blue))
