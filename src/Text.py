@@ -18,7 +18,7 @@ class Text:
 
     def fill_sentiments(self):
         self.sentiments = []
-        if not self.sentiments:
+        if not self.sentiments:  # wenn die liste leer ist, fahre fort
             for sentence in self.sentences:
                 self.sentiments.append(sentence.sentiment)
 

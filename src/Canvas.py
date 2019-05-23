@@ -22,7 +22,7 @@ class Canvas:
 
         self.text = Text(text)
         # x is 1 since we scale it later anyway - less memory
-        self.dimensions = (1, (len(self.text.colours)) * (self.rec_height + 1))
+        self.dimensions = (1, (len(self.text.colours)) * (self.rec_height + 1))  # len colours - len sentences
 
         # scaling started
         # if len(self.text.colours) * self.rec_height > dimensions[1]:
@@ -43,7 +43,7 @@ class Canvas:
                                   fill=colour)
             y_pos += self.rec_height + 1
 
-    def save(self, name, to_scale=(200, 200)):
+    def save(self, name, to_scale=(200, 200)):  # default value später überschrieben
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
         self.image = self.image.resize(to_scale)
