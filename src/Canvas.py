@@ -44,15 +44,14 @@ class Canvas:
             self.drawer.rectangle([(x_pos, y_pos), (self.dimensions[0], y_pos + self.rec_height)],
                                   fill=colour)
             y_pos += self.rec_height + 1
-    #ImageDraw.ImageDraw.multiline_text(x=100, y=100, text="Alice", fill=None,
-     #                                                   font= None,
-     #                                                   anchor=None, spacing=0, align="left", direction="rtl")
+
 
     def save(self, name, to_scale=(200, 200)):  # default value später überschrieben
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
         self.image = self.image.resize(to_scale)
-        self.drawer = self.drawer.text((100,100), "Alice", fill=None, font=ImageFont.truetype("font_path123"))
+        font = ImageFont.load_default()
+        self.drawer.text((150, 150), "Alice", fill=(255, 255, 255), font=font)
         self.image.save(os.path.join(self.repository, name))
 
     # def __scale_colours(self):
