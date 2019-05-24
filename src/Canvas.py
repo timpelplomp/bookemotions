@@ -19,7 +19,6 @@ class Canvas:
     scaled_colours = None
     choosencolour = ""
 
-
     def __init__(self, text, choosencolour):
         self.text = Text(text, choosencolour)
         # x is 1 since we scale it later anyway - less memory
@@ -44,7 +43,6 @@ class Canvas:
                                   fill=colour)
             y_pos += self.rec_height + 1
 
-
     def save(self, name, to_scale=(200, 200)):  # default value später überschrieben
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
@@ -54,7 +52,6 @@ class Canvas:
     # def __scale_colours(self):
     #     scaled_colours = []
     #     return scaled_colours
-
 
     def draw_metadata(self, name, metadata):
         img = Image.open(os.path.join(self.repository, name))

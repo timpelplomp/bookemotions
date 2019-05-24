@@ -43,8 +43,7 @@ class Text:
                 red = 0
                 self.colours.append((red, green, blue))
             if self.colour == "blue":
-              blue = emotion
-              green = 0
-              red = 0
-              self.colours.append((red, green, blue))
-
+                blue = emotion
+                green = 0
+                red = 0
+                self.colours.append((red, green, blue))
