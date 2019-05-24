@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import os
 
 from src.Text import Text
@@ -13,6 +13,7 @@ class Canvas:
     repository = "images"
     dimensions = None
     image = None
+    metaimage = None
     text = None
     drawer = None
     rec_height = 2
@@ -43,11 +44,15 @@ class Canvas:
             self.drawer.rectangle([(x_pos, y_pos), (self.dimensions[0], y_pos + self.rec_height)],
                                   fill=colour)
             y_pos += self.rec_height + 1
+    #ImageDraw.ImageDraw.multiline_text(x=100, y=100, text="Alice", fill=None,
+     #                                                   font= None,
+     #                                                   anchor=None, spacing=0, align="left", direction="rtl")
 
     def save(self, name, to_scale=(200, 200)):  # default value später überschrieben
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
         self.image = self.image.resize(to_scale)
+        self.drawer = self.drawer.text((100,100), "Alice", fill=None, font=ImageFont.truetype("font_path123"))
         self.image.save(os.path.join(self.repository, name))
 
     # def __scale_colours(self):
@@ -62,3 +67,12 @@ frame = Canvas(plaintext, "green")  # choosencolour can be "green", "blue", "red
 frame.draw()
 
 frame.save("example.png", (300, 300))
+
+# TODO: Metadaten auf Leinwand übernehmen
+filename = []
+entries = os.listdir("resources/books/")
+for entry in entries:
+    for part in entry.split("."):
+        if part != "txt":
+            filename.append(part)
+print(filename)
