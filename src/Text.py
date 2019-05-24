@@ -42,4 +42,3 @@ class Text:
             if self.colour == "blue":
                 blue = emotion
             self.colours.append((red, green, blue))
-
