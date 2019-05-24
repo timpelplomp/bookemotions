@@ -58,6 +58,12 @@ class Canvas:
     #     scaled_colours = []
     #     return scaled_colours
 
+    def draw_metadaten(self, name, metadaten):
+        img = Image.open(os.path.join(self.repository,name))
+        font = ImageFont.load_default()
+        d = ImageDraw.Draw(img)
+        d.text((150, 150), metadaten, fill=(255, 255, 255), font=font)
+        img.save(os.path.join(self.repository, name))
 
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
@@ -67,6 +73,7 @@ frame.draw()
 
 frame.save("example.png", (300, 300))
 
+
 # TODO: Metadaten auf Leinwand übernehmen
 filename = []
 entries = os.listdir("resources/books/")
@@ -75,3 +82,5 @@ for entry in entries:
         if part != "txt":
             filename.append(part)
 print(filename)
+
+frame.draw_metadaten("example.png", filename[0]+"")
