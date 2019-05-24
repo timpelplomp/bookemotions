@@ -17,10 +17,10 @@ class Canvas:
     drawer = None
     rec_height = 2
     scaled_colours = None
-    choosencolour = ""
+    chosen_colour = ""
 
-    def __init__(self, text, choosencolour):
-        self.text = Text(text, choosencolour)
+    def __init__(self, text, chosen_colour):
+        self.text = Text(text, chosen_colour)
         # x is 1 since we scale it later anyway - less memory
         self.dimensions = (1, (len(self.text.colours)) * (self.rec_height + 1))  # len colours - len sentences
 
@@ -38,7 +38,7 @@ class Canvas:
                                   fill=colour)
             y_pos += self.rec_height + 1
 
-    def save(self, name, to_scale=(200, 200)):  # default value später überschrieben
+    def save(self, name, to_scale=(200, 200)):  # default value, later overwritten
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
         self.image = self.image.resize(to_scale)
@@ -54,7 +54,7 @@ class Canvas:
 
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
-frame = Canvas(plaintext, "blue")  # choosencolour can be "green", "blue", "red"
+frame = Canvas(plaintext, "blue")  # chosen_colour can be "green", "blue", "red"
 frame.draw()
 
 frame.save("example.png", (300, 300))
