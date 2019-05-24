@@ -13,7 +13,6 @@ class Canvas:
     repository = "images"
     dimensions = None
     image = None
-    metaimage = None
     text = None
     drawer = None
     rec_height = 2
