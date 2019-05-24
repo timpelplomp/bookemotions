@@ -17,10 +17,11 @@ class Canvas:
     drawer = None
     rec_height = 2
     scaled_colours = None
+    choosencolour = ""
 
-    def __init__(self, text):
 
-        self.text = Text(text)
+    def __init__(self, text, choosencolour):
+        self.text = Text(text, choosencolour)
         # x is 1 since we scale it later anyway - less memory
         self.dimensions = (1, (len(self.text.colours)) * (self.rec_height + 1))  # len colours - len sentences
 
@@ -57,7 +58,7 @@ class Canvas:
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
 # frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
-frame = Canvas(plaintext)
+frame = Canvas(plaintext, "green")
 frame.draw()
 
 frame.save("example.png", (300, 300))

@@ -7,9 +7,11 @@ class Text:
     sentiments = []
     blob = TextBlob
     colours = []
+    colour = ""
     # scaled_colours = None
 
-    def __init__(self, text_string):
+    def __init__(self, text_string, choosencolour):
+        self.colour = choosencolour
         self.content = text_string
         self.blob = TextBlob(self.content)
         self.sentences = self.blob.sentences
@@ -29,8 +31,19 @@ class Text:
         rgb_middle = 255/2
         for sentiment in self.sentiments:
             emotion = round(rgb_middle + sentiment.polarity * rgb_middle)
-            red = 0
-            green = emotion
-            blue = 0
+            if self.colour == "red":
+                red = emotion
+                green = 0
+                blue = 0
+                self.colours.append((red, green, blue))
+            if self.colour == "green":
+                green = emotion
+                blue = 0
+                red = 0
+                self.colours.append((red, green, blue))
+            if self.colour == "blue":
+              blue = emotion
+              green = 0
+              red = 0
+              self.colours.append((red, green, blue))
 
-            self.colours.append((red, green, blue))
