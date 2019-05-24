@@ -56,12 +56,14 @@ class Canvas:
     #     scaled_colours = []
     #     return scaled_colours
 
-    def draw_metadaten(self, name, metadaten):
-        img = Image.open(os.path.join(self.repository,name))
-        font = ImageFont.truetype("Verdana.ttf",20)
+
+    def draw_metadata(self, name, metadata):
+        img = Image.open(os.path.join(self.repository, name))
+        font = ImageFont.truetype("Verdana.ttf", 20)
         d = ImageDraw.Draw(img)
-        d.text((10, 150), metadaten, fill=(255, 255, 255), font=font, align="left")
+        d.text((10, 150), metadata, fill=(255, 255, 255), font=font, align="left")
         img.save(os.path.join(self.repository, name))
+
 
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
@@ -81,4 +83,4 @@ for entry in entries:
             filename.append(part)
 print(filename)
 
-frame.draw_metadaten("example.png", filename[0]+"")
+frame.draw_metadata("example.png", filename[0]+"")
