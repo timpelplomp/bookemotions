@@ -10,8 +10,8 @@ class Text:
     colour = ""
     # scaled_colours = None
 
-    def __init__(self, text_string, choosencolour):
-        self.colour = choosencolour
+    def __init__(self, text_string, chosen_colour):
+        self.colour = chosen_colour
         self.content = text_string
         self.blob = TextBlob(self.content)
         self.sentences = self.blob.sentences
