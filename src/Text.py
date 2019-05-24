@@ -28,6 +28,7 @@ class Text:
             print("was already filled with sentiments")
 
     def fill_colours(self):
+        self.colours = []
         rgb_middle = 255/2
         for sentiment in self.sentiments:
             emotion = round(rgb_middle + sentiment.polarity * rgb_middle)

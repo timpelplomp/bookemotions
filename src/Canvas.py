@@ -83,3 +83,8 @@ for entry in entries:
 print(filename)
 
 frame.draw_metadata("example.png", filename[0]+"")
+
+
+frame_neg = Canvas("I hate my life", (300, 300))
+frame_neg.draw()
+frame_neg.save("negative.png")
