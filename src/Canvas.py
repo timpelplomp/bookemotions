@@ -50,8 +50,6 @@ class Canvas:
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
         self.image = self.image.resize(to_scale)
-        font = ImageFont.load_default()
-        self.drawer.text((150, 150), "Alice", fill=(255, 255, 255), font=font)
         self.image.save(os.path.join(self.repository, name))
 
     # def __scale_colours(self):
@@ -60,21 +58,21 @@ class Canvas:
 
     def draw_metadaten(self, name, metadaten):
         img = Image.open(os.path.join(self.repository,name))
-        font = ImageFont.load_default()
+        font = ImageFont.truetype("Verdana.ttf",20)
         d = ImageDraw.Draw(img)
-        d.text((150, 150), metadaten, fill=(255, 255, 255), font=font)
+        d.text((10, 150), metadaten, fill=(255, 255, 255), font=font, align="left")
         img.save(os.path.join(self.repository, name))
 
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
 # frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
-frame = Canvas(plaintext, "green")  # choosencolour can be "green", "blue", "red"
+frame = Canvas(plaintext, "blue")  # choosencolour can be "green", "blue", "red"
 frame.draw()
 
 frame.save("example.png", (300, 300))
 
 
-# TODO: Metadaten auf Leinwand übernehmen
+# TODO: Metadaten auf Leinwand übernehmen als Schleife über Dateien?
 filename = []
 entries = os.listdir("resources/books/")
 for entry in entries:
