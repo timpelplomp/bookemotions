@@ -67,7 +67,7 @@ class Canvas:
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
 # frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
-frame = Canvas(plaintext, "blue")  # choosencolour can be "green", "blue", "red"
+frame = Canvas(plaintext, "red")  # choosencolour can be "green", "blue", "red"
 frame.draw()
 
 frame.save("example.png", (300, 300))
@@ -85,6 +85,6 @@ print(filename)
 frame.draw_metadata("example.png", filename[0]+"")
 
 
-frame_neg = Canvas("I hate my life", (300, 300))
-frame_neg.draw()
-frame_neg.save("negative.png")
+#frame_neg = Canvas("I hate my life", (300, 300))
+#frame_neg.draw()
+#frame_neg.save("negative.png")
