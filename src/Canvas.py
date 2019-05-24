@@ -61,6 +61,7 @@ frame.save("example.png", (300, 300))
 
 
 # TODO: Metadaten auf Leinwand übernehmen als Schleife über Dateien?
+# TODO: center and or scale text automatically
 filename = []
 entries = os.listdir("resources/books/")
 for entry in entries:
