@@ -32,19 +32,14 @@ class Text:
         rgb_middle = 255/2
         for sentiment in self.sentiments:
             emotion = round(rgb_middle + sentiment.polarity * rgb_middle)
+            blue = 0
+            red = 0
+            green = 0
             if self.colour == "red":
                 red = emotion
-                green = 0
-                blue = 0
-                self.colours.append((red, green, blue))
             if self.colour == "green":
                 green = emotion
-                blue = 0
-                red = 0
-                self.colours.append((red, green, blue))
             if self.colour == "blue":
-              blue = emotion
-              green = 0
-              red = 0
-              self.colours.append((red, green, blue))
+                blue = emotion
+            self.colours.append((red, green, blue))
 
