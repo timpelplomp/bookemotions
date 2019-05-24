@@ -24,11 +24,6 @@ class Canvas:
         # x is 1 since we scale it later anyway - less memory
         self.dimensions = (1, (len(self.text.colours)) * (self.rec_height + 1))  # len colours - len sentences
 
-        # scaling started
-        # if len(self.text.colours) * self.rec_height > dimensions[1]:
-        #     self.scaled_colours = self.scaled_colours
-        # else:
-        #     self.scaled_colours = self.text.colours
         self.scaled_colours = self.text.colours
 
         self.image = Image.new(self.colour_space, self.dimensions, self.background)
@@ -49,10 +44,6 @@ class Canvas:
         self.image = self.image.resize(to_scale)
         self.image.save(os.path.join(self.repository, name))
 
-    # def __scale_colours(self):
-    #     scaled_colours = []
-    #     return scaled_colours
-
     def draw_metadata(self, name, metadata):
         img = Image.open(os.path.join(self.repository, name))
         font = ImageFont.truetype("Verdana.ttf", 20)
@@ -63,7 +54,6 @@ class Canvas:
 
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
-# frame = Canvas("This is a beautiful day. I walk through the valley of death and despair. I hate this town.")
 frame = Canvas(plaintext, "blue")  # choosencolour can be "green", "blue", "red"
 frame.draw()
 
