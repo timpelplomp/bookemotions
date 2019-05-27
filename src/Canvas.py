@@ -44,15 +44,17 @@ class Canvas:
         self.image = self.image.resize(to_scale)
         self.image.save(os.path.join(self.repository, name))
 
-    def draw_metadata(self, name, metadata):
+    def draw_metadata(self, name, metadata, metadata2):
         img = Image.open(os.path.join(self.repository, name))
         font = ImageFont.truetype("Verdana.ttf", 20)
+        font2 = ImageFont.truetype("Saga Italic.ttf", 20)
         d = ImageDraw.Draw(img)
-        d.text((10, 150), metadata, fill=(255, 255, 255), font=font, align="left")
+        d.text((40, 170), metadata, fill=(255, 255, 255), font=font2, align="left")
+        d.text((10, 150), metadata2, fill=(255, 255, 255), font=font, align="left")
         img.save(os.path.join(self.repository, name))
 
 
-with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
+with open("resources/books/Carroll_Alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
 frame = Canvas(plaintext, "green")  # chosen_colour can be "green", "blue", "red"
 frame.draw()
@@ -62,14 +64,21 @@ frame.save("example.png", (300, 300))
 
 # TODO: Metadaten auf Leinwand übernehmen als Schleife über Dateien?
 filename = []
+filename2 = []
 entries = os.listdir("resources/books/")
 for entry in entries:
     for part in entry.split("."):
         if part != "txt":
+            filename2.append(part)
+for file in filename2:
+    for part in file.split("_"):
             filename.append(part)
+
+
+
 print(filename)
 
-frame.draw_metadata("example.png", filename[0]+"")
+frame.draw_metadata("example.png", filename[0]+"", filename[1]+"")
 
 
 # frame_neg = Canvas("I hate my life", (300, 300))
