@@ -54,7 +54,7 @@ class Canvas:
 
 with open("resources/books/alice.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
-frame = Canvas(plaintext, "blue")  # chosen_colour can be "green", "blue", "red"
+frame = Canvas(plaintext, "green")  # chosen_colour can be "green", "blue", "red"
 frame.draw()
 
 frame.save("example.png", (300, 300))
