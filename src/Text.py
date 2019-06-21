@@ -47,10 +47,12 @@ class Text:
 
             self.colours.append((red, green, blue))
 
-    def print_sentattrs(self):
+    def print_sentattrs(self, when_break = None):
         for i, sentiment in enumerate(self.sentiments):
-            print(str(sentiment.polarity) + " for: " + str(self.sentences[i]))
-
+            print("polarity: " + str(sentiment.polarity) + " for: " + str(self.sentences[i]))
+            if when_break:
+                if i == when_break:
+                    break
 
 
 example_sent = "The lake was deep and dark."
@@ -58,5 +60,9 @@ example_subj = "I found the lake deep and dark. I love fish."
 example_text = Text(example_subj)
 print(example_text.sentiments)
 
-example_subj_text = Text(example_subj)
-example_subj_text.print_sentattrs()
+with open("resources/books/alice.txt", "r") as f:
+    alice_text = f.read()
+
+
+example_subj_text = Text(alice_text)
+example_subj_text.print_sentattrs(when_break=3)
