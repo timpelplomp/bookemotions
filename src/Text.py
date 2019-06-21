@@ -63,6 +63,9 @@ print(example_text.sentiments)
 with open("resources/books/alice.txt", "r") as f:
     alice_text = f.read()
 
-
-example_subj_text = Text(alice_text)
-example_subj_text.print_sentattrs(when_break=3)
+with open("resources/books/Shakespeare_Hamlet.txt", "r") as f:
+    hamlet_text = f.read()
+example_alice_text = Text(alice_text)
+example_alice_text.print_sentattrs(when_break=3)
+example_hamlet_text = Text(hamlet_text)
+example_hamlet_text.print_sentattrs(when_break=40)
