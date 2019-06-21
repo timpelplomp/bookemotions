@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import os
 
 from src.Text import Text
@@ -38,10 +38,13 @@ class Canvas:
                                   fill=colour)
             y_pos += self.rec_height + 1
 
-    def save(self, name, to_scale=(200, 200)):  # default value, later overwritten
+    def save(self, name, to_scale=(200, 200), blur=False):  # default value, later overwritten
         bbox = self.image.getbbox()
         self.image = self.image.crop(bbox)
         self.image = self.image.resize(to_scale)
+        if blur:
+            self.image = self.image.filter(ImageFilter.GaussianBlur(radius=2))
+
         self.image.save(os.path.join(self.repository, name))
 
     def draw_metadata(self, name, metadata, metadata2):
@@ -59,10 +62,11 @@ with open("resources/books/Carroll_Alice.txt", "r", encoding="utf-8") as f:
 frame = Canvas(plaintext, "green")  # chosen_colour can be "green", "blue", "red"
 frame.draw()
 
-frame.save("example.png", (300, 300))
+frame.save("example.png", (300, 300), blur=True)
 
 
 # TODO: Metadaten auf Leinwand übernehmen als Schleife über Dateien?
+# TODO: center and or scale text automatically
 filename = []
 filename2 = []
 entries = os.listdir("resources/books/")
