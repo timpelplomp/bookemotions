@@ -10,7 +10,7 @@ class Text:
     colour = ""
     # scaled_colours = None
 
-    def __init__(self, text_string, chosen_colour):
+    def __init__(self, text_string, chosen_colour="green"):
         self.colour = chosen_colour
         self.content = text_string
         self.blob = TextBlob(self.content)
@@ -46,3 +46,17 @@ class Text:
                 blue = emotion
 
             self.colours.append((red, green, blue))
+
+    def print_sentattrs(self):
+        for i, sentiment in enumerate(self.sentiments):
+            print(str(sentiment.polarity) + " for: " + str(self.sentences[i]))
+
+
+
+example_sent = "The lake was deep and dark."
+example_subj = "I found the lake deep and dark. I love fish."
+example_text = Text(example_subj)
+print(example_text.sentiments)
+
+example_subj_text = Text(example_subj)
+example_subj_text.print_sentattrs()
