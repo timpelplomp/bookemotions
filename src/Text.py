@@ -60,7 +60,7 @@ example_subj = "I found the lake deep and dark. I love fish."
 example_text = Text(example_subj)
 print(example_text.sentiments)
 
-with open("resources/books/alice.txt", "r") as f:
+with open("resources/books/Carroll_Alice.txt", "r") as f:
     alice_text = f.read()
 
 with open("resources/books/Shakespeare_Hamlet.txt", "r") as f:

@@ -57,9 +57,9 @@ class Canvas:
         img.save(os.path.join(self.repository, name))
 
 
-with open("resources/books/Carroll_Alice.txt", "r", encoding="utf-8") as f:
+with open("resources/books/Shakespeare_Hamlet.txt", "r", encoding="utf-8") as f:
     plaintext = f.read()
-frame = Canvas(plaintext, "green")  # chosen_colour can be "green", "blue", "red"
+frame = Canvas(plaintext, "red")  # chosen_colour can be "green", "blue", "red"
 frame.draw()
 
 frame.save("example.png", (300, 300), blur=True)
@@ -82,7 +82,7 @@ for file in filename2:
 
 print(filename)
 
-frame.draw_metadata("example.png", filename[0]+"", filename[1]+"")
+frame.draw_metadata("example.png", filename[2]+"", filename[3]+"")
 
 
 # frame_neg = Canvas("I hate my life", (300, 300))
